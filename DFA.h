@@ -12,28 +12,29 @@ typedef struct _State State;
 
 typedef struct _Transition Transition;
 
-typedef enum {
-    START, FINAL, OTHER
+typedef enum
+{
+    START,
+    FINAL,
+    OTHER
 } StateType;
 
+Dfa *newDFA(State **states, int nStates);
 
-Dfa * newDFA(State** states, int nStates);
+void addTransition(State *origin, char symbol, State *dest);
 
-void addTransition(State* origin, char symbol, State* dest);
+State *newState(char *name, StateType type);
 
-State * newState(char* name, StateType type);
-
-void printDFA(Dfa* dfa);
+void printDFA(Dfa *dfa);
 
 void printState(State *state);
 
-void printTransition(Transition *trans) ;
+void printTransition(Transition *trans);
 
-int runDFA(Dfa* dfa, char* str);
+int runDFA(Dfa *dfa, char *str);
 
-void dfaFree(Dfa* dfa);
+void dfaFree(Dfa *dfa);
 
-void stateFree(State* state);
-
+void stateFree(State *state);
 
 #endif
